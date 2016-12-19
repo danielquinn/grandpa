@@ -1,52 +1,94 @@
 #!/usr/bin/env python3
 
-video_template = """
-  <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2">
-    <div class="box">
-      <video id="my-video" class="video-js" controls preload="auto" width="320" height="240" poster="img/posters/{i:02}.jpg" data-setup="{{}}">
-        <source src="vid/{i:02}.mp4" type="video/mp4">
-        <p class="vjs-no-js">
-          To view this video please enable JavaScript, and consider upgrading to a web browser that
-          <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-        </p>
-      </video>
-    </div>
-  </div>
-"""
-page_template = """
-  <html>
-    <head>
-      <title></title>
-      <link href="http://vjs.zencdn.net/5.8.8/video-js.css" rel="stylesheet">
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
-      <style>
-        body {{
-          background-color: #333333;
-        }}
-        .box {{
-          padding: 0.5em;
-        }}
-        video {{
-          width: 100%;
-          height: 800px;
-        }}
-      </style>
-    </head>
-    <body>
-      <div class="container-fluid">
-
-        {}
-
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
-        <script src="http://vjs.zencdn.net/5.8.8/video.js"></script>
-      </div>
-    </body>
-  </html>
-"""
+import os
 
 
-videos = []
-for i in range(38):
-    videos.append(video_template.format(i=i))
+class SiteGenerator(object):
 
-print(page_template.format("\n".join(videos)))
+    TEMPLATES = os.path.normpath(os.path.join("..", "templates"))
+    BASE_TEMPLATE = os.path.join(TEMPLATES, "base.html")
+    INDEX_TEMPLATE = os.path.join(TEMPLATES, "index.html")
+    VIDEO_TEMPLATE = os.path.join(TEMPLATES, "video.html")
+    ABOUT_TEMPLATE = os.path.join(TEMPLATES, "about.html")
+
+    INDEX = os.path.normpath(os.path.join("..", "htdocs", "index.html"))
+    ABOUT = os.path.normpath(os.path.join("..", "htdocs", "about.html"))
+    VIDEO = os.path.normpath(os.path.join("..", "htdocs", "{:02}.html"))
+
+    def __init__(self):
+
+        with open(self.BASE_TEMPLATE) as f:
+            self.base_template = f.read()
+
+        with open(self.INDEX_TEMPLATE) as f:
+            self.index_template = f.read()
+
+        with open(self.ABOUT_TEMPLATE) as f:
+            self.about_template = f.read()
+
+        with open(self.VIDEO_TEMPLATE) as f:
+            self.video_template = f.read()
+
+    def generate_index(self):
+        self.write(
+            self.INDEX,
+            self.base_template.replace("{{ home_active }}", " active"),
+            self.index_template,
+            "Grandpa"
+        )
+
+    def generate_about(self):
+        self.write(
+            self.ABOUT,
+            self.base_template.replace("{{ about_active }}", " active"),
+            self.about_template,
+            "About"
+        )
+
+    def generate_videos(self):
+        for i in range(40):
+            if i == 4:
+                continue
+
+            nfo = os.path.join("..", "resources", "nfo", "{:02}.nfo".format(i))
+            with open(nfo) as f:
+                metadata = ""
+                for line in f:
+                    line = line.strip()
+                    if line:
+                        metadata += "<li>{}</li>".format(line)
+
+            self.write(
+                self.VIDEO.format(i),
+                self.base_template,
+                self.video_template.replace("{{ metadata }}", metadata).format(i=i),
+                "Video {}".format(i)
+            )
+
+    @staticmethod
+    def write(target, host, insert, title):
+        """
+        :param target: The path to the target file
+        :param host: The template containing the marker we're replacing
+        :param insert: What replaces the marker
+        :param title: What goes into the <title> tag
+        """
+        content = host.replace(
+            "{{ content }}", insert
+        ).replace(
+            "{{ title }}", title
+        ).replace(
+            "{{ home_active }}", ""
+        ).replace(
+            "{{ about_active }}", ""
+        )
+
+        with open(target, "w") as f:
+            f.write(content)
+
+
+if __name__ == "__main__":
+    g = SiteGenerator()
+    g.generate_index()
+    g.generate_about()
+    g.generate_videos()
