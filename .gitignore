@@ -87,3 +87,7 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+# You don't want these files getting into the repo.
+htdocs/vid/*
+
