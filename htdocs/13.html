@@ -1,0 +1,79 @@
+<html>
+  <head>
+    <title>Video 13</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/cover.css" />
+    <link rel="stylesheet" href="/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/css/video-js.css" />
+    <link rel="stylesheet" href="/css/jquery-ui.css" />
+    <link rel="stylesheet" href="/css/general.css" />
+  </head>
+  <body>
+
+    <div class="site-wrapper">
+      <div class="site-wrapper-inner">
+        <div class="cover-container">
+          <div class="masthead clearfix">
+            <div class="inner">
+              <h3 class="masthead-brand"><a href="/">Grandpa</a></h3>
+              <nav class="nav nav-masthead">
+                <a class="nav-link" href="/">Home</a>
+                <a class="nav-link" href="/about.html">About</a>
+                <a class="nav-link" href="/random.html">Random</a>
+              </nav>
+            </div>
+          </div>
+          <video id="video-13" class="video-js" controls preload="auto" poster="/img/posters/13.jpg" data-setup="{}">
+  <source src="/vid/13.webm" type="video/webm">
+  <p class="vjs-no-js">
+    To view this video please enable JavaScript, and consider upgrading to a web browser that
+    <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+  </p>
+</video>
+
+<section class="metadata">
+  <ul>
+    <li>2009 October 29th, Harrison Lake, Camping for 3 days: Me, Lidia, Adam, antique cars</li><li>1998 Jon Glin with Rachet in Spatiu</li><li>???? Adam with school dancing</li><li>???? Lidia's birthday</li><li>???? September 27th, Long Beach, Washington</li><li>1999 With Rumnicianu</li><li>2000 New Year Lidia & Paul Revelion</li><li>2000 Our 50th Anniversary</li>
+  </ul>
+</section>
+
+          <div class="mastfoot">
+            <div class="inner">
+              <p>
+                All footage from my grandfather, Ovanes Filip.<br />
+                The source code for this site can be found <a href="https://github.com/danielquinn/grandpa">here</a>.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery-ui.js"></script>
+    <script src="/js/tether.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/video.js"></script>
+    <script src="/js/search.js"></script>
+
+    <script>
+
+      // Fix jQueryUI
+      jQuery.ui.autocomplete.prototype._resizeMenu = function () {
+        var ul = this.menu.element;
+        ul.outerWidth(this.element.outerWidth());
+      };
+
+      $(function(){
+        $("#search").autocomplete({
+          source: Object.keys(document.grandpa.index),
+          select: function(event, ui){
+            var page = document.grandpa.index[ui.item.value];
+            window.location.href = "/" + page + ".html";
+          }
+        });
+      });
+
+    </script>
+
+  </body>
+</html>
