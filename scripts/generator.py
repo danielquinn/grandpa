@@ -1,6 +1,9 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python3.4
 
 import os
+import re
+
+from markdown import markdown
 
 
 class SiteGenerator(object):
@@ -9,7 +12,7 @@ class SiteGenerator(object):
     BASE_TEMPLATE = os.path.join(TEMPLATES, "base.html")
     INDEX_TEMPLATE = os.path.join(TEMPLATES, "index.html")
     VIDEO_TEMPLATE = os.path.join(TEMPLATES, "video.html")
-    ABOUT_TEMPLATE = os.path.join(TEMPLATES, "about.html")
+    ABOUT_TEMPLATE = os.path.join("..", "README.md")
 
     INDEX = os.path.normpath(os.path.join("..", "htdocs", "index.html"))
     ABOUT = os.path.normpath(os.path.join("..", "htdocs", "about.html"))
@@ -24,7 +27,7 @@ class SiteGenerator(object):
             self.index_template = f.read()
 
         with open(self.ABOUT_TEMPLATE) as f:
-            self.about_template = f.read()
+            self.about_template = "".join(f.readlines()[1:])
 
         with open(self.VIDEO_TEMPLATE) as f:
             self.video_template = f.read()
@@ -41,7 +44,12 @@ class SiteGenerator(object):
         self.write(
             self.ABOUT,
             self.base_template.replace("{{ about_active }}", " active"),
-            self.about_template,
+            '<div class="about">{}</div>'.format(
+                markdown(re.sub("^#", "", self.about_template)).replace(
+                    "a href",
+                    'a class="text-info" href'
+                )
+            ),
             "About"
         )
 

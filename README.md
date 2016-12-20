@@ -1,6 +1,6 @@
 # Grandpa
 
-The archive of all of my Grandpa's home videos over the decades
+This is the archive of all of my Grandpa's home videos over the decades
 
 ## Story
 
@@ -44,9 +44,9 @@ that to JSON so it can be searchable on the static site.
 The video itself is digital so it's well preserved, but converting it from
 homemade DVD (with variable titles numbers and chapters, thanks Grandpa) was
 no picnic.  So far I've managed to use [ffmpeg](https://ffmpeg.org/) to
-transcode everything into a format that's web-friendly, and I've managed to
-parallelise the whole process with Python so I can take advantage of my
-16-core super machine.
+transcode everything into a format that's web-friendly, and I've parallelised
+the whole process with Python so I can take advantage of my 16-core super
+machine.
 
 The video player is HTML5 from [video.js](http://videojs.com/) and the site
 itself is simple HTML/CSS/JS + Bootstrap so it doesn't look 100% ugly.
