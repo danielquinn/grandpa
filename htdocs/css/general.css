@@ -53,3 +53,9 @@ video, .video-js {
 .select2-dropdown {
   background-color: #333333;
 }
+.select2-results__option {
+  color: #cccccc;
+}
+.select2-results__option strong {
+  color: #ffffff;
+}

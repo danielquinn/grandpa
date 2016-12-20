@@ -2,7 +2,14 @@ var $search = $("#search");
 
 $search.select2({
   placeholder: "Select a video event",
-  minimumResultsForSearch: Infinity
+  templateResult: function(state){
+    return $(
+        state.text.replace(
+            /^([^ ]+) (.*)/,
+            '<span><strong>$1</strong> $2</span>'
+        )
+    );
+  }
 });
 
 $search.on("change", function(){
