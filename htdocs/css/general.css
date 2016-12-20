@@ -36,3 +36,13 @@ video, .video-js {
   padding: 0.5em;
   list-style-type: none;
 }
+
+
+.masthead {
+  position: static;
+  margin-bottom: 5em;
+}
+.mastfoot {
+  position: static;
+  margin-top: 3em;
+}
