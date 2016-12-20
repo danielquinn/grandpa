@@ -50,31 +50,5 @@
     <script src="/js/video.js"></script>
     <script src="/js/search.js"></script>
 
-    <script>
-
-function formatState (state) {
-  if (!state.id) { return state.text; }
-  var $state = $(
-    '<span class="description">' + state.text + '</span>'
-  );
-  return $state;
-};
-
-$("#search").select2({
-    placeholder: "Select a video event",
-    minimumResultsForSearch: Infinity
-});
-
-      $(function(){
-        $("#search").on("change", function(){
-            var page = $(this).val().toString();
-            if (page) {
-              window.location.href = "/" + page + ".html";
-            }
-        });
-      });
-
-    </script>
-
   </body>
 </html>
