@@ -20,3 +20,6 @@ with open(os.path.join("..", "htdocs", "js", "search.js"), "w") as f:
     f.write('document.grandpa = {{"index": {}}}'.format(
         json.dumps(output, sort_keys=True)
     ))
+
+for event, collection in sorted(output.items(), key=lambda o: o[0]):
+    print('<option value="{:02}">{}</option>'.format(collection, event))

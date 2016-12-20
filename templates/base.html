@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="/css/cover.css" />
     <link rel="stylesheet" href="/css/font-awesome.min.css" />
     <link rel="stylesheet" href="/css/video-js.css" />
-    <link rel="stylesheet" href="/css/jquery-ui.css" />
+    <link rel="stylesheet" href="/css/select2.min.css" />
     <link rel="stylesheet" href="/css/general.css" />
   </head>
   <body>
@@ -37,7 +37,7 @@
     </div>
 
     <script src="/js/jquery.min.js"></script>
-    <script src="/js/jquery-ui.js"></script>
+    <script src="/js/select2.full.min.js"></script>
     <script src="/js/tether.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/video.js"></script>
@@ -45,19 +45,24 @@
 
     <script>
 
-      // Fix jQueryUI
-      jQuery.ui.autocomplete.prototype._resizeMenu = function () {
-        var ul = this.menu.element;
-        ul.outerWidth(this.element.outerWidth());
-      };
+function formatState (state) {
+  if (!state.id) { return state.text; }
+  var $state = $(
+    '<span><img src="vendor/images/flags/' + state.element.value.toLowerCase() + '.png" class="img-flag" /> ' + state.text + '</span>'
+  );
+  return $state;
+};
+
+$(".js-example-templating").select2({
+  templateResult: formatState
+});
 
       $(function(){
-        $("#search").autocomplete({
-          source: Object.keys(document.grandpa.index),
-          select: function(event, ui){
-            var page = document.grandpa.index[ui.item.value];
-            window.location.href = "/" + page + ".html";
-          }
+        $("#search").on("change", function(){
+            var page = $(this).val().toString();
+            if (page) {
+              window.location.href = "/" + page + ".html";
+            }
         });
       });
 
