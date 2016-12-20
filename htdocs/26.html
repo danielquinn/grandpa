@@ -1,12 +1,18 @@
 <html>
   <head>
+
     <title>Video 26</title>
+
     <link rel="stylesheet" href="/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/css/cover.css" />
     <link rel="stylesheet" href="/css/font-awesome.min.css" />
     <link rel="stylesheet" href="/css/video-js.css" />
     <link rel="stylesheet" href="/css/select2.min.css" />
     <link rel="stylesheet" href="/css/general.css" />
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
   </head>
   <body>
 
@@ -61,13 +67,14 @@
 function formatState (state) {
   if (!state.id) { return state.text; }
   var $state = $(
-    '<span><img src="vendor/images/flags/' + state.element.value.toLowerCase() + '.png" class="img-flag" /> ' + state.text + '</span>'
+    '<span class="description">' + state.text + '</span>'
   );
   return $state;
 };
 
-$(".js-example-templating").select2({
-  templateResult: formatState
+$("#search").select2({
+    placeholder: "Select a video event",
+    minimumResultsForSearch: Infinity
 });
 
       $(function(){

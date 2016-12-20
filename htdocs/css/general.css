@@ -46,3 +46,10 @@ video, .video-js {
   position: static;
   margin-top: 3em;
 }
+
+.select2-container--default .select2-selection--single {
+  background-color: #333333;
+}
+.select2-dropdown {
+  background-color: #333333;
+}

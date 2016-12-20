@@ -1,12 +1,18 @@
 <html>
   <head>
+
     <title>Grandpa</title>
+
     <link rel="stylesheet" href="/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/css/cover.css" />
     <link rel="stylesheet" href="/css/font-awesome.min.css" />
     <link rel="stylesheet" href="/css/video-js.css" />
     <link rel="stylesheet" href="/css/select2.min.css" />
     <link rel="stylesheet" href="/css/general.css" />
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
   </head>
   <body>
 
@@ -28,8 +34,8 @@
   <form method="get">
     <div class="input-group">
       <label for="search" class="sr-only">Find a video</label>
-      <span class="input-group-addon" id="basic-addon1"><i class="fa fa-search"></i></span>
       <select name="index" class="form-control custom-select" id="search">
+        <option value=""></option>
         <option value="02">1950 Fam Filips dupā</option>
         <option value="02">1950 Family Macedonski</option>
         <option value="02">1950 In Bucharest</option>
@@ -230,13 +236,14 @@
 function formatState (state) {
   if (!state.id) { return state.text; }
   var $state = $(
-    '<span><img src="vendor/images/flags/' + state.element.value.toLowerCase() + '.png" class="img-flag" /> ' + state.text + '</span>'
+    '<span class="description">' + state.text + '</span>'
   );
   return $state;
 };
 
-$(".js-example-templating").select2({
-  templateResult: formatState
+$("#search").select2({
+    placeholder: "Select a video event",
+    minimumResultsForSearch: Infinity
 });
 
       $(function(){
