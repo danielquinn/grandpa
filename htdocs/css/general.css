@@ -69,3 +69,8 @@ video, .video-js {
   margin: 1.2em 0;
   font-size: larger;
 }
+
+.heads-up {
+  margin: 2em;
+  text-align: center;
+}
