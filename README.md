@@ -37,17 +37,23 @@ in the extreme.
 ## Technical
 
 The DVDs I started with were all home-made, with no metadata attached at all
-save for the paper insert in the casing, hand-written in Romanian.  I've done
-my best to transcribe it all into `.nfo` files, and will eventually convert
-that to JSON so it can be searchable on the static site.
+save for the paper insert in the casing, hand-written in Romanian.  I did
+my best to transcribe it all into `.nfo` files (translating the Romanian where
+I could and leaving it when I had no idea what he was trying to say), which
+were then scripted here into writing static HTML both in the primary index on
+the home page and on each video's specific page.  I'm using
+[select2](http://select2.github.io/) to handle the magical combo box since that
+level of js magic is beyond me.
 
 The video itself is digital so it's well preserved, but converting it from
-homemade DVD (with variable titles numbers and chapters, thanks Grandpa) was
-no picnic.  So far I've managed to use [ffmpeg](https://ffmpeg.org/) to
-transcode everything into a format that's web-friendly, and I've parallelised
-the whole process with Python so I can take advantage of my 16-core super
-machine.
+homemade DVD (with variable title numbers and chapters, thanks Grandpa) was
+no picnic.  I've managed to use [ffmpeg](https://ffmpeg.org/) to transcode
+everything into a format that's web-friendly, and I parallelised the whole
+process with Python so I can take advantage of my 16-core super machine and
+generate web-friendly versions of the 38 ISO rips in just over a day and half.
+
+If you're curious about the flags used to generate these files, take a look at
+[queue.json](https://github.com/danielquinn/grandpa/blob/master/scripts/queue.json).
 
 The video player is HTML5 from [video.js](http://videojs.com/) and the site
-itself is simple HTML/CSS/JS + Bootstrap so it doesn't look 100% ugly.
-
+itself is simple HTML/CSS/JS + Bootstrap4 so it doesn't look 100% ugly.
