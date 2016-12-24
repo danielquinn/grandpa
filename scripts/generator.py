@@ -41,6 +41,14 @@ class SiteGenerator(object):
         )
 
     def generate_about(self):
+        self.about_template = self.about_template.replace(
+            "## Technical",
+            '<img src="{}" class="{}" style="{}" />\n\n## Technical'.format(
+                "/img/grandpa.jpg",
+                "img-fluid",
+                "border: 1px solid #666666;"
+            )
+        )
         self.write(
             self.ABOUT,
             self.base_template.replace("{{ about_active }}", " active"),
