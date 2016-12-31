@@ -1,0 +1,96 @@
+<html>
+  <head>
+
+    <title>About</title>
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/cover.css" />
+    <link rel="stylesheet" href="/css/video-js.css" />
+    <link rel="stylesheet" href="/css/select2.min.css" />
+    <link rel="stylesheet" href="/css/general.css" />
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+  </head>
+  <body>
+
+    <div class="site-wrapper">
+      <div class="site-wrapper-inner">
+        <div class="cover-container">
+          <div class="masthead clearfix">
+            <div class="inner">
+              <h3 class="masthead-brand"><a href="/">Grandpa</a></h3>
+              <nav class="nav nav-masthead">
+                <a class="nav-link" href="/">Home</a>
+                <a class="nav-link active" href="/about.html">About</a>
+                <a class="nav-link" href="/random.html">Random</a>
+              </nav>
+            </div>
+          </div>
+          <div class="about"><p>This is the archive of all of my Grandpa's home videos over the decades</p>
+<h2>Story</h2>
+<p>My grandfather was the family videographer for over sixty years.  He collected
+video from his life from <em>before my mother was born</em>, and when he died, I was
+worried that that archive had been lost.  Thankfully, we were able to salvage
+some of the footage in the form of 38 DVDs he'd made himself by converting the
+old formats.  A lot were originally shot on compact magnetic tape, then
+converted to VHS, then to DVD.  Others are even older, back when he was carting
+around a massive reel-to-reel rig.  These videos were moved to VHS by him
+sitting patiently in the basement, with his modern camera pointed at his
+projection screen, the audio being fed in through the mic picking up background
+ambient room noise.</p>
+<p>My grandfather was not an A/V mastermind, but he was an archivist in his own
+right.  He managed to collect and curate more than 100 hours out of his
+lifetime, and I'm grateful for the times he used to call me down to the
+basement to watch the old videos of my mother as a child, or me as a toddler.
+I didn't want to let this archive die with him.</p>
+<h2>Why isn't this on YouTube?</h2>
+<p>Google is so afraid of copyright lawyers that home movies with occasional
+background music (low quality, ambient background noise) is enough for them to
+cry foul and mute my uploads.  Of the four test videos I uploaded, two of them
+had the audio stripped from the complete file for "copyright reasons".</p>
+<p>This is why we need a federated internet.  Depending on one centralised
+American provider for the source of our shared cultural experience is unhealthy
+in the extreme.</p>
+<p><img src="/img/grandpa.jpg" class="img-fluid" style="border: 1px solid #666666;" /></p>
+<h2>Technical</h2>
+<p>The DVDs I started with were all home-made, with no metadata attached at all
+save for the paper insert in the casing, hand-written in Romanian.  I did
+my best to transcribe it all into <code>.nfo</code> files (translating the Romanian where
+I could and leaving it when I had no idea what he was trying to say), which
+were then scripted here into writing static HTML both in the primary index on
+the home page and on each video's specific page.  I'm using
+<a class="text-info" href="http://select2.github.io/">select2</a> to handle the magical combo box since that
+level of js magic is beyond me.</p>
+<p>The video itself is digital so it's well preserved, but converting it from
+homemade DVD (with variable title numbers and chapters, thanks Grandpa) was
+no picnic.  I've managed to use <a class="text-info" href="https://ffmpeg.org/">ffmpeg</a> to transcode
+everything into a format that's web-friendly, and I parallelised the whole
+process with Python so I can take advantage of my 16-core super machine and
+generate web-friendly versions of the 38 ISO rips in just over a day and half.</p>
+<p>If you're curious about the flags used to generate these files, take a look at
+<a class="text-info" href="https://github.com/danielquinn/grandpa/blob/master/scripts/queue.json">queue.json</a>.</p>
+<p>The video player is HTML5 from <a class="text-info" href="http://videojs.com/">video.js</a> and the site
+itself is simple HTML/CSS/JS + Bootstrap4 so it doesn't look 100% ugly.</p></div>
+          <div class="mastfoot">
+            <div class="inner">
+              <p>
+                All footage from my grandfather, Ovanes Filip.<br />
+                The source code for this site can be found <a href="https://github.com/danielquinn/grandpa">here</a>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/select2.full.min.js"></script>
+    <script src="/js/tether.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/video.js"></script>
+    <script src="/js/search.js"></script>
+
+  </body>
+</html>

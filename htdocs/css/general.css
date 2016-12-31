@@ -1,0 +1,76 @@
+.inner form {
+  margin: 2em 0;
+}
+input, select, textarea {
+  background-color: #333333;
+  color: #ffffff;
+  padding: 1em 3em;
+  border: 1px solid #666666;
+}
+
+footer {
+  margin: 5em auto;
+  text-align: center;
+}
+video, .video-js {
+  width: 100%;
+}
+
+.ui-autocomplete {
+  max-height: 200px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  font-size: smaller;
+}
+
+.metadata {
+  margin: 1em;
+  text-align: justify;
+}
+.metadata ul {
+  padding: 0;
+  border-top: 1px solid #666666;
+}
+.metadata li {
+  border-bottom: 1px solid #666666;
+  padding: 0.5em;
+  list-style-type: none;
+}
+
+
+.masthead {
+  position: static;
+  margin-bottom: 5em;
+}
+.mastfoot {
+  position: static;
+  margin-top: 3em;
+}
+
+.select2-container--default .select2-selection--single {
+  background-color: #333333;
+}
+.select2-dropdown {
+  background-color: #333333;
+}
+.select2-results__option {
+  color: #cccccc;
+}
+.select2-results__option strong {
+  color: #ffffff;
+}
+
+.about {
+  margin: 1em;
+  text-align: left;
+  color: #cccccc;
+}
+.about p {
+  margin: 1.2em 0;
+  font-size: larger;
+}
+
+.heads-up {
+  margin: 2em;
+  text-align: center;
+}

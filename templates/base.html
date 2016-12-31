@@ -1,0 +1,52 @@
+<html>
+  <head>
+
+    <title>{{ title }}</title>
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/cover.css" />
+    <link rel="stylesheet" href="/css/video-js.css" />
+    <link rel="stylesheet" href="/css/select2.min.css" />
+    <link rel="stylesheet" href="/css/general.css" />
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+  </head>
+  <body>
+
+    <div class="site-wrapper">
+      <div class="site-wrapper-inner">
+        <div class="cover-container">
+          <div class="masthead clearfix">
+            <div class="inner">
+              <h3 class="masthead-brand"><a href="/">Grandpa</a></h3>
+              <nav class="nav nav-masthead">
+                <a class="nav-link{{ home_active }}" href="/">Home</a>
+                <a class="nav-link{{ about_active }}" href="/about.html">About</a>
+                <a class="nav-link" href="/random.html">Random</a>
+              </nav>
+            </div>
+          </div>
+          {{ content }}
+          <div class="mastfoot">
+            <div class="inner">
+              <p>
+                All footage from my grandfather, Ovanes Filip.<br />
+                The source code for this site can be found <a href="https://github.com/danielquinn/grandpa">here</a>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/select2.full.min.js"></script>
+    <script src="/js/tether.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/video.js"></script>
+    <script src="/js/search.js"></script>
+
+  </body>
+</html>

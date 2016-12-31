@@ -88,6 +88,6 @@ ENV/
 # Rope project settings
 .ropeproject
 
-htdocs/vid/*.webm
-htdocs/vid/*.mp4
+# You don't want these files getting into the repo.
+htdocs/vid/*
 
