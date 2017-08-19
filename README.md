@@ -57,3 +57,6 @@ If you're curious about the flags used to generate these files, take a look at
 
 The video player is HTML5 from [video.js](http://videojs.com/) and the site
 itself is simple HTML/CSS/JS + Bootstrap4 so it doesn't look 100% ugly.
+
+A complete breakdown of this project can be found in the [blog post](https://danielquinn.org/blog/grandpas-archive/)
+I wrote on it back in December, 2016.
